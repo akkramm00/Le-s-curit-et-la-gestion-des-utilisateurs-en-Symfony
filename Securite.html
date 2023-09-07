@@ -101,7 +101,16 @@
                ROLE_ADMIN:     ROLE_USER
         </pre>
         <p>
-          L'ensemble du site n'est accessible qu'aux utilisateurs connéctés qui ont le ROLE_USER. Les pages commençant par /login qui font pourtant partie du site sont accessibles à tous, tandis que la pages commençant par le chemin /users ne sont accessibles qu'aux utilisateurs qui ont le ROLE_ADMIN.
+          L'ensemble du site n'est accessible qu'aux utilisateurs connéctés qui ont le ROLE_USER. Les pages commençant par /login qui font pourtant partie du site sont accessibles à tous, tandis que la pages commençant par le chemin /users ne sont accessibles qu'aux utilisateurs qui ont le ROLE_ADMIN. <br>
+          role_hierarchy ici permet de donner à ROLE_ADMIN toutes les autorisations de ROLE_USER. <br><br>
+
+          Il est possible de restreindre une route en mettant une annotation ou un attribut avant la méthode du controleur qui gère la route , par exemple: <br>
+          => #[IsGranted('ROLE_ADMIN')] ou d'utiliser les rolescomme condition dans un fichier Twig , par exemple : <br>
+       <pre>
+         {% if is_granted('ROLE_ADMIN') %}
+           <a href="{{ path('user_create') }}"calss="btn btn-primary">Créer un utilisateur</a>
+         {% endif %}
+       </pre>
         </p>
         
         
