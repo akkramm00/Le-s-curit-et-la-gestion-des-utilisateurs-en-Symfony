@@ -92,9 +92,9 @@
         </p>
         <pre>
           access_control:
-               - { path: ^/, roles: ROLE_USERb }
-               - { path: ^/login, roles: PUBLIC_ACCESS }
-               - { path: ^/users, roles: ROLE_ADMIN }
+               - { path: ^/, roles: ROLE_USER } => accessible aux utilisateurs connectés.
+               - { path: ^/login, roles: PUBLIC_ACCESS } => accessible a tous.
+               - { path: ^/users, roles: ROLE_ADMIN } n'est accessible qu'aux roel admin.
 
 
           role_hierarchy:
@@ -111,6 +111,34 @@
            <a href="{{ path('user_create') }}"calss="btn btn-primary">Créer un utilisateur</a>
          {% endif %}
        </pre>
+        </p>
+
+        <h2>Autres outils de sécurité</h2>
+        <p>
+          Il faut savoir que Symfony apporte certains outils liés à la sécurité: <br><br>
+
+          * HttpFoundation par exemple gère les sessions pour nous. Plus besoin comme dans le PHP, d'utiliser session_start() et d'autres fonctions similaires de la superglobales $_SESSION. Pour utiliser les sessions à partir d'un controlleur vous pouvez taper un argument request de cette façon: <br><br>
+
+          $session = $request->getSession() <br><br>
+
+          *La protection CSRF peut etre activée grace à security-csrf. CSRF (Cross-Site-Request-Forgery) est un type de vunérabilité des services d'authentification web. Ainsi security-csrf crée un token nommé par défaut _csrf_token qui permet , entre autres et pour faire simple, de vérifier qu'un formulaire vient bien de notre site et de la bonne personne. Pensez à vérifier que csrf_protection est à true dans le fichier framework.yaml. 
+
+          
+          <h4>Exemple</h4>
+          <pre>
+            framework:
+               secret: '%env(APP_SECRET)%'
+               csrf_protection: true
+               http_method_override: false
+          </pre>
+
+        <span>Pour installer ces packs, voici les commandes nécessaires:</span>
+        <br><br>
+
+        * $ composer require symfony/http_foundation <br>
+        * $ composer require symfony/security-csrf <br>
+          
+          
         </p>
         
         
