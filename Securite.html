@@ -75,9 +75,15 @@
           </ul>
         <br>
         Maintenant regardons le fichier "security.yaml" qui se trouve dans packages du dossier config: <br>
-         "config\packages\security.yaml"
-          
+         "config\packages\security.yaml" (Voir fichier Security.yaml) <br>
         </p>
+        <h4>Explication</h4>
+        => enable_authenticator_manager: true, il sert à activer le workflow d'authentification. <br>
+        => password_hashers, il précise l'interface de hashage choisi et son mode , ici en "auto". <br>
+        => providers , doctrine va pouvoir connaitre l'entité désignée pour la connaxion ainsi que sa propriété qui désigne l'entité unique choisie. <br>
+        => Firewalls, le pare-feu gère toutes les URL et s'assure de l'authentification; il permet d'utiliser plusieurs modes d'authentification. <br>
+        => access_control, il permet de définir des restrictions d'accès sur des routes en fonction du role de l'utilisateur.
+        
         
       </div>
     </div>
