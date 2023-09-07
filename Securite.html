@@ -21,8 +21,40 @@
       </div>
     </div>
   </header>
+  <main class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="w-100 text-center py-3 text-primary m-0">La sécurité</h1>
+        <p>
+          <h4>Secutriy-bundle</h4>
+          Afin de nous pouvoir se concentrer sue la géstion des utlisateurs et la sécurité, nous allons partir d'un projet qui a déja été créé avec une connexion à la base de données et makerBundle installée.
+          <br><br>
+          Commençons par installer le pack de sécurité fourni par Symfony ainsi que l'entité User. Grace à ce pack de sécurité, nous pouvons faire un "make:user" à la place d'une création habituelle d'entité avec "make:entity" . De cette façon, User sera créé avec des outils de securité.
+        </p>
+      <h2>Méthode</h2>
+        <p>
+          Pour cela, Dans votre terminal, tapez la ligne de commande suivante:
+          <br><br>
 
-        <h1 class="w-100 text-center py-3 bg-primary text-white m-0">La sécurité</h1>
+          => $ composer require symfony/security-bundle <br>
+          => php bin/console make:user <br><br>
+
+          Le terminal nous demande de choisir un nom et nous propose "User", ce qui est bien alors validez. <br>
+          "The name of the security user class (e.g. User) [Use]" <br>
+
+          Puis , il vous demande si vous voulez stocker les données utilisateurs dans la base de données par Doctrine. Valider également. <br>
+
+          Maintenat on vous demande d'entrer la propriété qui sera unique pour "User" et il vous propose par défaut "email". Valider aussi. <br>
+
+          
+          
+          
+        </p>
+        
+      </div>
+    </div>
+  </main>
+
 
   
 
