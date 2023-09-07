@@ -78,11 +78,31 @@
          "config\packages\security.yaml" (Voir fichier Security.yaml) <br>
         </p>
         <h4>Explication</h4>
+        <p>
         => enable_authenticator_manager: true, il sert à activer le workflow d'authentification. <br>
         => password_hashers, il précise l'interface de hashage choisi et son mode , ici en "auto". <br>
-        => providers , doctrine va pouvoir connaitre l'entité désignée pour la connaxion ainsi que sa propriété qui désigne l'entité unique choisie. <br>
+        => providers , doctrine va pouvoir connaitre l'entité désignée pour la connexion ainsi que sa propriété qui désigne l'entité unique choisie. <br>
         => Firewalls, le pare-feu gère toutes les URL et s'assure de l'authentification; il permet d'utiliser plusieurs modes d'authentification. <br>
         => access_control, il permet de définir des restrictions d'accès sur des routes en fonction du role de l'utilisateur.
+        </p>
+
+        <h2>Rôles</h2>
+        <p>
+          Le rôle est une propriété importante pour gérer les utilisateurs. ON peut définir les routes qui sont accéssibles suivant le ro^le qui est attribué à l'utilisateur dans le fichier "security.yaml" . Voici un exemple ci-dessous :
+        </p>
+        <pre>
+          access_control:
+               - { path: ^/, roles: ROLE_USERb }
+               - { path: ^/login, roles: PUBLIC_ACCESS }
+               - { path: ^/users, roles: ROLE_ADMIN }
+
+
+          role_hierarchy:
+               ROLE_ADMIN:     ROLE_USER
+        </pre>
+        <p>
+          L'ensemble du site n'est accessible qu'aux utilisateurs connéctés qui ont le ROLE_USER. Les pages commençant par /login qui font pourtant partie du site sont accessibles à tous, tandis que la pages commençant par le chemin /users ne sont accessibles qu'aux utilisateurs qui ont le ROLE_ADMIN.
+        </p>
         
         
       </div>
