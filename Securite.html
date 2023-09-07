@@ -51,11 +51,31 @@
           Autre point important , on vous dedmande maintenant si vous voulez hasher (crypter) le mot de passe d'User. Vous pouvez également valider. <br>
           english message :bDoes this need to hash/check user passwords? (yes/no) [yes]; <br><br>
            C'est un succès, vous êtes prévenu qu'une entité et un repository User et UserRepository ont été créés et que le fichier "security.yaml" a été modifié.
-          
-          
+        </p>
+        <br><br>
+        <h2>Add autres propriétés Méthode</h2>
+        <p>
+          Notre Entité User est assez sommaire , nous pouvons ajouter d'autres propriétés avant de faire une migration et mettre à jour la base de données. Voici les commandes qui nous seront nécessaires: <br><br>
 
-          
-          
+          => $ symfony console make:entity  //choisir User et ajouter vos propriétés <br>
+          => $ symfony console make:migration <br>
+          => symfony console doctrine:migrations:migrate 
+
+         <br>
+          <h4>Qu'est ce que security-bundle a apporté ?</h4>
+          Tout d'abord, dans l'entité User qui vient d'être créée, on constate que les interfaces "UserInterface" et PasswordAuthentificateUserInterface ont été imùplémentées. <br>
+          L'implémentation de ces interfdaces ajoute des méthodes à notre classe User: <br>
+          <ul>
+            <li>getUserIdentifier(): permet de retourner identifiant unique que l'on achoisi</li>
+            <li>getRoles(): permet de récuperer le role de l'utilisateur</li>
+            <li>setRoles(): permet de modifier le rôle de l'utilisateur.</li>
+            <li>getPassword(): permet de récupérer le mot de passe de l'utilisateur.</li>
+            <li>getsalt(): est utlie uniquement si nous n'avons pas de méthode de hachage</li>
+            <li>eraseCredentials(): permet d'effacer les donné"s sensibles et temporaires.</li>
+          </ul>
+        <br>
+        Maintenant regardons le fichier "security.yaml" qui se trouve dans packages du dossier config: <br>
+         "config\packages\security.yaml"
           
         </p>
         
