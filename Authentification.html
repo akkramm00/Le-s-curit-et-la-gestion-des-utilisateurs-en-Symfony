@@ -21,8 +21,28 @@
       </div>
     </div>
   </header>
-
+  <main class="container">
+    <div class="row">
+      <div class="col">
         <h1 class="w-100 text-center py-3 bg-primary text-white m-0">AUthentification</h1>
+        <p>
+          Nous allons maintenant installer l'authentification. Mais d'abord, installons "Twig" ainsi que  "doctrine annotations" qui seront nécessaires au bon fonctionnemnt de l'authentification. <br>
+          Pour cela, nous utilisons les commandes suivantes :
+          <br><br>
+
+          => $ composer require twig <br>
+          => $ composer require doctrine/annotations <br>
+          = $ symfony console make:auth <br>
+          <br>
+          " What style of authentication do you want? [Empty authenticator] :" <br>
+          [0] Empty authenticator <br>
+          [1] login form authenticator <br>
+          C'est la première question qu'il pose lorsqu'on installe l'authentification. Il demande si on veut qu'il génère un formulaire d'authentification . Taper 1 pour la création de celui-ci.
+        </p>
+      </div>
+    </div>
+  </main>
+
 
   
 
