@@ -97,10 +97,40 @@
           Maintenant regardons la page login.html.twig qui se trouve dans "security\ du dossier templates\." . <br>
            Notez aussi que la page twig généré possède des classes Bootstrap qui est un framework HTML, CSS, vous bénéficierez d'une meilleure présentation si vous l'installer, mais nous ne verrons pas cette démarche
         </p>
-        
-        
+        </p>
+        <pre>
+          {% extends  'base.html.twi' %}
 
-          
+          {% block title %}Log in ! {% endblock %}
+          {% block body %}
+          <form method="post">
+            {% if error %}
+              <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            
+            {% if app.user %}
+              <div class="mb-3">
+                You are logged in as {{ app.user.useridentifier }}, <a href="{{ path('app_logout') }}"></a>
+              </div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputEmail">Email</label>
+            <input type=="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+
+            <label for="inpuyPassword">Password</label>
+            <input type=="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            {#
+            ...
+            #}
+
+            <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+          </form>
+          {% endblock %}
+        </pre>
+        <p>
           
         </p>
       </div>
