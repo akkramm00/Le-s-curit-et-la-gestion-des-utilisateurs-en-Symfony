@@ -83,8 +83,20 @@
         => nous pouvons décommenter la première condition. Elle redirige un utilisateur qui n'est pas connécté ves le nom de la route que vous souhaitez (modifier target_path). <br>
         => la variable $error récupère les éventuels messages d'erreur. <br>
         => La variaable $lastname récupère le dernier utiliosateur connécté. <br>
-        => Dans le return, on appelle la vue, c-à-d lefichier twig qu'on a choisi pour afficher notre rendu, et on lui passe les deux variables ($lastname , $error).
+        => Dans le return, on appelle la vue, c-à-d lefichier twig qu'on a choisi pour afficher notre rendu, et on lui passe les deux variables ($lastname , $error). <br><br>
+        
         <h2>UserAuthenticator</h2>
+        <p>
+          UserAuthenticator sert à faire fonctionner toute l'authentification . nous n'allons pas tout décrire cette, néonmoins vous devez modifier la méthode  onAuthenticationSuccess(). <br>
+         Pour cela ,commentez la ligne d'exception qui commence par throw,décommenter la ligne au-dessus et mettez dans le generate() le nom de la route ou vous souhaitez que l'utilisateur soit rediriger en cas de succès de connexion.
+        </p>
+        <br>
+
+        <h2>Login.html.twig</h2>
+        <p>
+          Maintenant regardons la page login.html.twig qui se trouve dans "security\ du dossier templates\." . <br>
+           Notez aussi que la page twig généré possède des classes Bootstrap qui est un framework HTML, CSS, vous bénéficierez d'une meilleure présentation si vous l'installer, mais nous ne verrons pas cette démarche
+        </p>
         
         
 
