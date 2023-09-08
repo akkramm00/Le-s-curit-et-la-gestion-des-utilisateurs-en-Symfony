@@ -36,8 +36,50 @@
           <br>
           " What style of authentication do you want? [Empty authenticator] :" <br>
           [0] Empty authenticator <br>
-          [1] login form authenticator <br>
-          C'est la première question qu'il pose lorsqu'on installe l'authentification. Il demande si on veut qu'il génère un formulaire d'authentification . Taper 1 pour la création de celui-ci.
+          [1] login form authenticator <br><br>
+          C'est la première question qu'il pose lorsqu'on installe l'authentification. Il demande si on veut qu'il génère un formulaire d'authentification . Taper 1 pour la création de celui-ci. <br><br>
+          "the class name of the authenticator to create (e.g. appCustomAuthenticator):" <br>
+          Ensuite ,il nous demande de choisir un nom pour authenticator. Choisissez ce que vous voulez , ici on a choisi " UserAuthenticator  " <br><br>
+
+          " choose a name for the controller class (e.g. SecurityController) [SecurityController]: " <br>
+          Do you want to generate a '/logout' URL? (yes/no) [yes]: 
+          <br><br>
+          il nous demande de choisir un controleur et il vous propose SecurityController. <br>
+          Enfin, il demande si nous voulons générer une déconnexion. "Nous devons valider ". <br><br>
+
+          Nous constatons qu'il a créeé trois fichiers: <br>
+          => UserAuthenticator <br>
+          => SecurityAuthentidator <br>
+          => login.html.twig <br>
+          et qu'il a modifié le fichier security.yaml. <br><br>
+
+        A propos de security.yaml, ont été ajoutés dans le main du firewall le nom ainsi que son chemin d'accès de l'authentificator que nous avons créé, de méme que le nom de la route de déconnexion.
+          <br><br>
+
+          Regardons de plus près le fichier SecurityController qui vient d'être créé : <br>
+
+          <pre>
+            #[Route(path: '/login', name: 'app_login')]
+            public function login(AuthenticationUtils $authenticationUtils): response
+            {
+               // if ($this->getUser()) {
+               //    return $this->redirectToRoute('target_path');
+               //}
+
+               // get the login error if there is one
+               $error = $authenticationUtils->getLastUsername();
+
+               return $this->render('security/login.html.twig', ['last_username' => $lastusername, 'error' => $error]);
+            }
+            #[Route(path: '/logout', name: 'app_logout')]
+            public function logout(): void
+            {
+                throw new \Loginexception('this method can be blank - it will be intercepted by the logout key on your firewall.');
+            }
+          </pre>
+
+          
+          
         </p>
       </div>
     </div>
