@@ -77,6 +77,16 @@
                 throw new \Loginexception('this method can be blank - it will be intercepted by the logout key on your firewall.');
             }
           </pre>
+        <br>
+        dans la fonction login(): <br>  
+
+        => nous pouvons décommenter la première condition. Elle redirige un utilisateur qui n'est pas connécté ves le nom de la route que vous souhaitez (modifier target_path). <br>
+        => la variable $error récupère les éventuels messages d'erreur. <br>
+        => La variaable $lastname récupère le dernier utiliosateur connécté. <br>
+        => Dans le return, on appelle la vue, c-à-d lefichier twig qu'on a choisi pour afficher notre rendu, et on lui passe les deux variables ($lastname , $error).
+        <h2>UserAuthenticator</h2>
+        
+        
 
           
           
